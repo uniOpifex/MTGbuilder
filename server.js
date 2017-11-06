@@ -8,6 +8,9 @@ const mtg = require('mtgsdk')
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true}); //mongodb://localhost/idea-board
 
+const UserController = require('./routes/UserController');
+
+
 const connection = mongoose.connection;
 connection.on('connected', () => {
   console.log('Mongoose Connected Successfully');    
