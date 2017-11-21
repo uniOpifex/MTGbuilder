@@ -14,10 +14,7 @@ db.once("open", async function() {
   var CardModel = Schema.CardModel;
   var UserModel = Schema.UserModel
 
-  //Delete all decks from the database
-  // CollectionModel.remove({}, function(err) {
-  //   console.log(err);
-  // });
+ 
 
   // Create some decks and cards
   const card1 = new CardModel({ api_id: 386616, quantity: 1 });

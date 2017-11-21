@@ -2,29 +2,24 @@ import React, { Component } from "react";
 import axios from "axios";
 const mtg = require("mtgsdk");
 
-class MTGIndex extends Component {
+class CardIndex extends Component {
   state = {
-    card: {},
+    card: '',
     value: ''
   };
-
   componentWillMount() {
     this.getCard();
   }
-
   handleChange = (event) => {
-    const newState = {...this.state };
-    newState[event.target.value] = event.target.value;
-    this.setState(newState);
+    event.preventDefault;
+    this.setState({ value: event.target.value });
   }
 
-  handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value);
+  handleSubmit= (event) => {
+    alert("A name was submitted: " + this.state.value);
     event.preventDefault();
     this.updateCard();
   }
- 
-
   getCard = async () => {
     const data = await axios.get("https://api.magicthegathering.io/v1/cards", {
       params: {
@@ -48,9 +43,6 @@ class MTGIndex extends Component {
     });
   };
 
-
-  
-
   render() {
     const thisCard = this.state.card;
     const cardImg = thisCard.imageUrl;
@@ -59,14 +51,19 @@ class MTGIndex extends Component {
         <h1>{thisCard.name}</h1>
         <img src={cardImg} alt="" />
         <form onSubmit={this.handleSubmit}>
-          <label >
-            Card: 
-            <input type="text" value={this.state.value} onChange={this.handleChange}/>
+          <label>
+            Name:
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
           </label>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
   }
 }
 
-export default MTGIndex;
+export default CardIndex;
