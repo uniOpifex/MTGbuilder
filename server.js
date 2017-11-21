@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // app.use('/api/jobs', JobsController)
 
 
-app.use('/api/users', UserController)
+// app.use('/api/users', UserController)
 app.use(express.static(__dirname + '/client/build/'));
 app.get('/', (req, res)=>{
    res.sendFile(`${__dirname}/client/build/index.html`);

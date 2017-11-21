@@ -50,6 +50,7 @@ class CardIndex extends Component {
       <div>
         <h1>{thisCard.name}</h1>
         <img src={cardImg} alt="" />
+        <p>{thisCard.text}</p>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
