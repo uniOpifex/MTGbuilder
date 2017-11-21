@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import MTGIndex from './components/MTG/MTGIndex'
 import CardIndex from './components/MTG/CardIndex'
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 class App extends Component {
   render() {

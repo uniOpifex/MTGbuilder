@@ -1,43 +1,37 @@
 const mongoose = require("mongoose");
 
-// First, we instantiate a namespace for our Schema constructor defined by mongoose.
 const Schema = mongoose.Schema;
 
-const CardSchema = new Schema({
-  api_id: {
-    type: Number,
-    required: true
-  },
-  quantity: {
-    type: Number,
-    required: true
-  }
+var CardSchema = new Schema({
+	name: String,
+	manaCost: String,
+	cmc: Number,
+	types: Array,
+	imageUrl: String,
+	quantity: Number
 });
 
-const CollectionSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  cards: [CardSchema],
-  
+var DeckSchema = new Schema({
+	name: { type: String, required: true },
+	mainDeck: [CardSchema],
+	format: { type: String, required: true }
 });
 
-const UserSchema = mongoose.Schema({
-  username: {
-     type: String,
-     unique: true
-  },
-  cardCollection: []
-})
+var UserSchema = new Schema({
+	userName: { type: String, required: true, unique: true },
+	password: { type: String, required: true },
+	email: { type: String, required: true, unique: true }
+	cards: [CardSchema],
+	decks: [DeckSchema]
+});
 
 // Create models for each schema
-const CardModel = mongoose.model("Card", CardSchema);
-const CollectionModel = mongoose.model("CardCollection", CollectionSchema);
-const UserModel = mongoose.model("User", UserSchema)
+var CardModel = mongoose.model("Card", CardSchema);
+var DeckModel = mongoose.model("Deck", DeckSchema);
+var UserModel = mongoose.model("User", UserSchema);
 // Export each model so they can be required elsewhere
 module.exports = {
-  CardModel: CardModel,
-  CollectionModel: CollectionModel,
-  UserModel: UserModel
+	CardModel: CardModel,
+	DeckModel: DeckModel,
+	UserModel: UserModel
 };
