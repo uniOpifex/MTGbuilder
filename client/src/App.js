@@ -10,12 +10,16 @@ import {
 } from "react-router-dom";
 import MTGIndex from './components/MTG/MTGIndex'
 import CardIndex from './components/MTG/CardIndex'
+import LocalCardIndex from './components/MTG/LocalCardIndex'
 import Navbar from './components/Navbar'
 class App extends Component {
   render() {
 
     const CardIndexComponent = () => (
-      <CardIndex/>
+      <section>
+        <CardIndex/>
+        <LocalCardIndex/>
+      </section>
     )
     return (
       <Router>

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var CardSchema = new Schema({
+	name: ""
 });
 
 var DeckSchema = new Schema({

@@ -2,20 +2,15 @@ require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-
-// const JobsController = require('./routes/JobsController')
-mongoose.Promise = global.Promise;
-
-
 const app = express();
 
 
+mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true}); //mongodb://localhost/idea-board
 const connection = mongoose.connection;
 
-const UserController = require('./routes/UserController');
+const CardsController = require('./routes/CardsController');
 
 connection.on('connected', () => {
 console.log('Mongoose Connected Successfully');
@@ -36,9 +31,14 @@ app.use(bodyParser.json());
 
 // app.use('/api/users', UserController)
 app.use(express.static(__dirname + '/client/build/'));
+app.use(bodyParser.json())
+
 app.get('/', (req, res)=>{
    res.sendFile(`${__dirname}/client/build/index.html`);
 });
+
+app.use('/api/cards/', CardsController);
+
 
 
 
