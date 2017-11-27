@@ -12,9 +12,9 @@ db.once("open", async function() {
   console.log("Connected to MongoDB!");
 
   // Pull in Models from the `schema.js`
-    var Schema = require("./schema.js");
-    var Card = Schema.CardModel;
-    var DeckModel = Schema.DeckModel;
+    var Schema = require("./Schema.js");
+    var Card = Schema.Card;
+    var DeckModel = Schema.Deck;
     getCard = async (input) => {
       const inputArr = [input]
       const data = await axios.get("https://api.magicthegathering.io/v1/cards", {

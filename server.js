@@ -11,6 +11,8 @@ mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true}); //mongodb://l
 const connection = mongoose.connection;
 
 const CardsController = require('./routes/CardsController');
+const UsersController = require('./routes/UsersController');
+const DecksController = require('./routes/UsersController')
 
 connection.on('connected', () => {
 console.log('Mongoose Connected Successfully');
@@ -38,7 +40,8 @@ app.get('/', (req, res)=>{
 });
 
 app.use('/api/cards/', CardsController);
-
+app.use('/api/users/', UsersController);
+app.use('/api/users/:userId/deck', DecksController)
 
 
 

@@ -2,4 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: url("https://lh3.googleusercontent.com/zdDW2x0yMRlZRuTBtL_FvtLGHrbU3LhPe2_qwLNnMHMfbcGdy-R_MbEA45BDQp4491YzGgAoO55bXg=w1600-h803-rw") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

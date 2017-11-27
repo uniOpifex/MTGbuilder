@@ -30,7 +30,7 @@ var CardSchema = new Schema({
 
 const DeckSchema = new Schema({
   name: { type: String, required: true },
-  deckCards: [CardSchema]
+
 });
 
 const UserSchema = new Schema({
@@ -41,6 +41,7 @@ const UserSchema = new Schema({
 // Create models for each schema
 var CardModel = mongoose.model("Card", CardSchema);
 var DeckModel = mongoose.model("Deck", DeckSchema);
+var UserModel = mongoose.model("User", UserSchema)
 // Export each model so they can be required elsewhere
 module.exports = {
   Card: CardModel,

@@ -2,12 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const userPage = `user/${this.props}/`
   return (
-    <div>
-        <Link to="/collection">Collection</Link>
-        <Link to="decks">deck</Link>
-    </div>
+    <section>
+        <Link to="/login">Sign In</Link>
+        <Link to="/user/collection">Collection</Link>
+        <Link to={userPage}>Deck</Link>
+        <Link to="/cardIndex">cardIndex</Link>
+    </section>
   );
 };
 

@@ -3,7 +3,7 @@ var router = express.Router();
 const app = express();
 const axios = require("axios")
 
-var {Card} = require("../db/schema");
+var { Card } = require("../db/Schema");
 
 
 
