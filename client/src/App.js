@@ -26,23 +26,30 @@ class App extends Component {
   };
 
   signUp = async (userName, password) => {
+    await axios.post(`/api/users/`, { 
+      user: {
+        userName: userName,
+        password: password
+      }
+    } )
     try {
       const payload = {
         userName: userName,
         password: password
       };
-      const response = await axios.post("/users", payload);
 
       this.setState({
         signedIn: true
       });
     } catch (error) {
       console.log(error);
-    }
-  };
+    };
+  }
 
   signIn = async (userName, password, currentUser) => {
+    
   
+    
     try {
       this.setState({
         currentUser: currentUser
@@ -50,7 +57,7 @@ class App extends Component {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 
   render() {
     const CardIndexComponent = () => (
@@ -62,7 +69,8 @@ class App extends Component {
     const LoginPageComponent = props => (
       <LoginPage signUp={this.signUp} signIn={this.signIn} />
     );
-    return (
+
+    return(
       <Router>
         <div className="App">
           <header className="App-header">
@@ -71,17 +79,19 @@ class App extends Component {
           </header>
 
           <Switch>
-            <Route exact path="/" render={LoginPageComponent} />
+            
             <Route exact path="/login" render={LoginPageComponent} />
             <Route exact path ="/user/:userId" component={UserPage} />
             <Route exact path ="/user/:userId/deck/:deckId" component={DeckPage} />
             <Route exact path ="/user/:userId/deck/:deckId/card/:cardId" component={CardPage} />
-            <Route exact path ="/cardindex" render={CardIndexComponent}/>
+            <Route exact path ="/cardindex" render={CardIndexComponent} />
+            <Route exact path="/" render={LoginPageComponent} />
           </Switch>
         </div>
       </Router>
-    );
-  }
-}
+    
+    )
 
+}
+}
 export default App;

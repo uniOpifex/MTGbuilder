@@ -29,7 +29,7 @@ var CardSchema = new Schema({
 });
 
 const DeckSchema = new Schema({
-  name: { type: String, required: true },
+  deckName: { type: String, required: true },
 
 });
 

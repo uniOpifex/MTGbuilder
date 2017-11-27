@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true })
-const { User, Card } = require('../db/Schema')
+const { User, Card, Deck } = require('../db/Schema')
 
 
 

@@ -18,7 +18,7 @@ background-color: grey;
 color: black;
 border-radius: 10px;
 `
-class PantryList extends Component {
+class DeckList extends Component {
     render() {
         return (
             <div>
@@ -37,4 +37,4 @@ class PantryList extends Component {
     }
 }
 
-export default PantryList;
+export default DeckList;

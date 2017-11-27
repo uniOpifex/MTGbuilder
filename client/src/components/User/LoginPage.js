@@ -42,7 +42,7 @@ class LoginPage extends Component {
     const res = await axios.get('api/users/')
     this.setState({ users: res.data })
 }
-   signUp = event => {
+   signUp = async (event) => {
     event.preventDefault();
     this.props.signUp(
       this.state.userName,
