@@ -28,16 +28,22 @@ var CardSchema = new Schema({
   Watermark: String
 });
 
-var DeckSchema = new Schema({
+const DeckSchema = new Schema({
   name: { type: String, required: true },
   deckCards: [CardSchema]
 });
+
+const UserSchema = new Schema({
+  userName: { type: String, required: true },
+  password: String
+})
 
 // Create models for each schema
 var CardModel = mongoose.model("Card", CardSchema);
 var DeckModel = mongoose.model("Deck", DeckSchema);
 // Export each model so they can be required elsewhere
 module.exports = {
-  CardModel: CardModel,
-  DeckModel: DeckModel
+  Card: CardModel,
+  Deck: DeckModel,
+  User: UserModel
 };

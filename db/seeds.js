@@ -13,7 +13,7 @@ db.once("open", async function() {
 
   // Pull in Models from the `schema.js`
     var Schema = require("./schema.js");
-    var CardModel = Schema.CardModel;
+    var Card = Schema.CardModel;
     var DeckModel = Schema.DeckModel;
     getCard = async (input) => {
       const inputArr = [input]
@@ -38,17 +38,13 @@ db.once("open", async function() {
       blah = await getCard(index)
       const cardForInsert = [blah]
       console.log(cardForInsert)
-      CardModel.collection.insertMany(cardForInsert, function(err,r) {
+      Card.collection.insertMany(cardForInsert, function(err,r) {
         assert.equal(null, err);
         assert.equal(1, r.insertedCount);
         
       });
     })
-    // CardModel.collection.insertMany(data1, function(err,r) {
-    //     assert.equal(null, err);
-    //     assert.equal(1, r.insertedCount);
-    //     db.close();
-    //   });
+   
     
   
 });

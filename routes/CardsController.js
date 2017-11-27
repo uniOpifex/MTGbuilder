@@ -3,7 +3,7 @@ var router = express.Router();
 const app = express();
 const axios = require("axios")
 
-var {CardModel} = require("../db/schema");
+var {Card} = require("../db/schema");
 
 
 
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 	
 	if  ((Object.keys(params).length == 0 )) {
 		try {
-			const cards = await CardModel.find()
+			const cards = await Card.find()
 			res.json(cards)
 			} catch (err) {
 				res.send(err)
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 	} else if (params.hasOwnProperty("name")) {
 				
 				try {
-					const cards = await CardModel.find({'name': { $regex : cardToSearch, $options:'i' }});
+					const cards = await Card.find({'name': { $regex : cardToSearch, $options:'i' }});
 					
 					
 					
@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
 		
-		const newCard = new CardModel(req.body.card)
+		const newCard = new Card(req.body.card)
 		console.log(newCard)
 		const saved = await newCard.save()
 		console.log(saved)
