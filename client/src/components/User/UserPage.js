@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import DeckForm from '../Deck/DeckForm'
-import styled from 'styled-components'
 import EditDeck from '../Deck/EditDeck'
 
 
