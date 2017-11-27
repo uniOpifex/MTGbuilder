@@ -10,7 +10,7 @@ class LocalCardIndex extends Component {
     this.getCard();
   }
   handleChange = (event) => {
-    event.preventDefault;
+    event.preventDefault();
     this.setState({ value: event.target.value });
   }
 
@@ -44,6 +44,7 @@ class LocalCardIndex extends Component {
       console.log(data.data.length == 0)
       
     if (data.data.length == 0) {
+      console.log("looking for new")
       const newData = await axios.get("https://api.magicthegathering.io/v1/cards", {
         params: {
           name: this.state.value
@@ -53,6 +54,16 @@ class LocalCardIndex extends Component {
       await this.setState({
          card: thisCard
       });
+      const createCard = async () => {
+        console.log("Creating New")
+        console.log(Object.keys(this.state.card))
+        console.log("test")
+        const payload = JSON.stringify({ card: this.state.card})
+        console.log(payload)
+        await axios.post(`/api/cards/`, { card: this.state.card} )
+      }
+      await createCard();
+      
     } else {
     const thisCard = data.data[0]
     await this.setState({
@@ -60,6 +71,8 @@ class LocalCardIndex extends Component {
     })
   };
   };
+
+ 
 
   render() {
     const thisCard = this.state.card;
